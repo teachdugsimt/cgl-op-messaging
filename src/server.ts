@@ -1,9 +1,7 @@
 'use strict'
 
 import build from './app'
-
 const server = build()
-
 if (require.main === module) {
   const start = async () => {
     try {

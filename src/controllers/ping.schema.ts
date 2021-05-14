@@ -21,6 +21,11 @@ const pingSchema: FastifySchema = {
       type: 'object',
       properties: responseTemplate,
       additionalProperties: false
+    },
+    403: {
+      type: 'object',
+      properties: responseTemplate,
+      additionalProperties: false
     }
   }
 }
