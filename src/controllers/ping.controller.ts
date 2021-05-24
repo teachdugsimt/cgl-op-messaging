@@ -61,8 +61,6 @@ export default class PingController {
         })
       }
       const response = await smsSender(body_data.message, body_data.phoneNumber)
-      console.log("Final return :: ", response)
-      reply.status(200).send(response)
       return response
 
     } catch (error) {
