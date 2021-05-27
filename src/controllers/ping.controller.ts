@@ -28,7 +28,7 @@ export default class PingController {
       schema: pingSchema
     }
   })
-  async sendSmsHandler(req: FastifyRequest, reply: FastifyReply): Promise<any> {
+  async sendSmsHandler(req: FastifyRequest<{ Body: { message?: string, phoneNumber?: string } }>, reply: FastifyReply): Promise<any> {
     try {
       console.log("Event : ", req)
       const body_data: any = req.body
