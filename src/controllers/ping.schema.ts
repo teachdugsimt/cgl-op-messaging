@@ -7,10 +7,10 @@ const responseTemplate: any = {
 }
 
 const pingSchema: FastifySchema = {
-  // body: {
-  //   message: { type: 'string' },
-  //   phoneNumber: { type: 'string' }
-  // },
+  body: {
+    message: { type: 'string' },
+    phoneNumber: { type: 'string' }
+  },
   response: {
     200: {
       type: 'object',
