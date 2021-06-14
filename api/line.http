@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/v1/messaging/line/send HTTP/1.1
+Content-Type: application/json
+x-line-group-token: 2Hi2TNlIjJb517a9PvOJI1NHdbqsBg5ylpNzQ6NAgHn
+
+{
+  "message": "ทดสอบ"
+}

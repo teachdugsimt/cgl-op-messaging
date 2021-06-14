@@ -33,7 +33,7 @@ export default class EmailController {
     return {
       statusCode: 200,
       headers: {},
-      body: result
+      // body: result
     }
   }
 }
