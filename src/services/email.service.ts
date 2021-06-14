@@ -37,7 +37,7 @@ export default class EmailService {
                 Charset: charset,
                 Data: subject
               },
-              TextPart: {
+              HtmlPart: {
                 Charset: charset,
                 Data: bodyText
               }
