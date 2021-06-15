@@ -4,5 +4,5 @@ Content-Type: application/json
 {
   "email": "katanyoo@infiltech.org",
   "subject": "ทดสอบ",
-  "bodyText": "ทดสอบ\nขึ้นบรรทัดใหม่"
+  "bodyText": "<a href='https://infiltech.org'>link</a>"
 }

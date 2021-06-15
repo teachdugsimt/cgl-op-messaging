@@ -27,12 +27,12 @@ export default class EmailController {
     reply: FastifyReply
   ): Promise<any> {
 
-
+    console.log(req.body.bodyText)
     const result = await this.emailService.sendEmail(req.body.email, req.body.subject, req.body.bodyText)
 
     return {
       statusCode: 200,
-      headers: {},
+      // headers: {},
       // body: result
     }
   }

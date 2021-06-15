@@ -30,10 +30,9 @@ export default class LineController {
       req.headers["x-line-group-token"],
       req.body.message
     )
-    return {
-      statusCode: 200,
-      headers: {},
-      body: result
+
+    if (result.data.status == 200) {
+      return result.data
     }
   }
 }
