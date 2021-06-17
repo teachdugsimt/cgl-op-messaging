@@ -3,7 +3,7 @@ import * as AWS from 'aws-sdk'
 
 const pinpoint = new AWS.Pinpoint()
 
-const projectId = process.env.SMS_ID || 'd693f0b4ac0a4b6e9f71271d64cd7274'
+const projectId: any = process.env.PINPOINT_PROJECT_ID
 
 @Service()
 export default class SmsService {
@@ -40,7 +40,7 @@ export default class SmsService {
         },
       }
     };
-    return await pinpoint.sendMessages(params).promise();
+    return pinpoint.sendMessages(params).promise();
   }
 
   @Destructor()
