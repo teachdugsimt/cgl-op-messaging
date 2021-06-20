@@ -8,7 +8,7 @@ AWS.config.update({ region: aws_region });
 // AWS.config.credentials = credentials;
 
 const pinpoint = new AWS.Pinpoint()
-const projectId = process.env.PINPOINT_PROJECT_ID || '89c3aae913d046d98681b7d4cd80962a'
+const projectId: any = process.env.PINPOINT_PROJECT_ID
 
 
 
