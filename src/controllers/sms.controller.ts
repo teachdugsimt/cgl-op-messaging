@@ -4,14 +4,14 @@ import SmsService from '../services/sms.service';
 import smsSchema from './sms.schema';
 import ValidateParam from '../services/validate-param.service'
 
-@Controller({ route: '/api/v1/messaging' })
+@Controller({ route: '/api/v1/messaging/sms' })
 export default class SmsController {
 
   private smsService = getInstanceByToken<SmsService>(SmsService);
 
   @ValidateParam(smsSchema)
   @POST({
-    url: '/send-sms',
+    url: '/send',
     options: {
       schema: smsSchema
     }

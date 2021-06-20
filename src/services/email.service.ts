@@ -31,7 +31,7 @@ export default class EmailService {
         },
         MessageConfiguration: {
           EmailMessage: {
-            FromAddress: "katanyoo@infiltech.org",
+            FromAddress: "info@infiltech.org",
             SimpleEmail: {
               Subject: {
                 Charset: charset,
