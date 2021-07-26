@@ -28,7 +28,7 @@ export default class EmailController {
   ): Promise<any> {
 
     console.log(req.body.bodyText)
-    const result = await this.emailService.sendEmail(req.body.email, req.body.subject, req.body.bodyText)
+    const result = await this.emailService.sendEmailByYandex(req.body.email, req.body.subject, req.body.bodyText)
 
     return {
       statusCode: 200,

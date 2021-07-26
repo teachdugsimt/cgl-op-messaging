@@ -11,7 +11,7 @@ function build(opts: object = configApp) {
   app.register(fastifyBlipp)
   app.register(require('fastify-swagger'), configSwagger)
 
-  app.register(require('fastify-cors'), { 
+  app.register(require('fastify-cors'), {
     origin: (origin, cb) => {
       // if(/localhost/.test(origin)){
       //   //  Request from localhost will pass
@@ -36,7 +36,7 @@ function build(opts: object = configApp) {
   //     headerPairs: 2000   // Max number of header key=>value pairs
   //   }
   // });
-  
+
   app.register(bootstrap, {
     directory: resolve(__dirname, `controllers`),
     mask: /\.controller\./,
