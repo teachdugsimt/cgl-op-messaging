@@ -1,6 +1,7 @@
 'use strict'
 
 import build from './app'
+require('dotenv').config();
 const server = build()
 if (require.main === module) {
   const start = async () => {

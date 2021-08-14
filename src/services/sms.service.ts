@@ -4,6 +4,7 @@ import * as AWS from 'aws-sdk'
 const pinpoint = new AWS.Pinpoint()
 
 const projectId: any = process.env.PINPOINT_PROJECT_ID
+console.log(projectId)
 
 @Service()
 export default class SmsService {
