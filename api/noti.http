@@ -1,0 +1,47 @@
+POST http://localhost:3000/api/v1/messaging/notification/send HTTP/1.1
+Content-Type: application/json
+
+{
+  "tokens": [
+    "fKaT6w6SRmeFLWDQ0NGG8K:APA91bEi21PnFWZ-6his7G-zSPozC7ToJurugZsipyR2zcOzo1dtGdolhYWM7hWUA2ZtP64U4oHTTzcRSEqji0WJr36E5H9WRbkH84sG1LgxLhPr22rzPj_k88Y6urG-C9LqsX1ysb2N"
+  ],
+  "title": "คาร์โก้ลิ้งค์ มีงานใหม่ที่คุณอาจสนใจ",
+  "message": "งานขนส่ง ทุเรียน, นนทบุรี => เชียงราย"
+}
+
+###
+
+GET http://localhost:3000/api/v1/messaging/notification/tokens HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:3000/api/v1/messaging/notification/add-token HTTP/1.1
+Content-Type: application/json
+
+{
+  "token": "e1f618824e26a5c3d024dbdffd15c4e540115dd53aceff59f0b97da09f1e10fd",
+  "userId": "abcdef", 
+  "platform": "android"
+}
+
+###
+
+POST https://fcm.googleapis.com/v1/projects/cargolink-18c1a/messages:send
+Content-Type: application/json
+Authorization:key=AAAAl2sCnkU:APA91bEHuGGiT_WtD9xYxTjsvAuqllcYScmFd3grynT5Vry4s4kbOx-scdZoATxcRMUY0ag6PLfUiNHz3Aas-tTEfUGb50bjlnUMAdagEUBO1oTmXl2HNmRjXzp44wECTWQ0wFY4drfJ
+
+{
+    "validate_only": false,
+    "message": {
+        "token": "cPQMrl85R72yra-bJnkxtv:APA91bFjWqBR9vg859b-nBdcLecvvdiK0ZHy2o54NfweVBZJexBYs3_NHnU6-k2flw8VX6ztQpoRbhy8R6mPq1yt5iW2YASJgmMqvVY-0H76KyLaWLuAzLsIsPn7_JVmyaIxD_XMyN2Z",
+        "notification": {
+            "title": "Breaking News",
+            "body": "New Story available."
+        },
+        "android": {
+            "priority": "high"
+        }
+    }
+}

@@ -6,6 +6,8 @@ import { resolve } from 'path';
 
 import configApp from './config/app'
 import configSwagger from './config/swagger'
+import connectionDb from './plugins'
+
 function build(opts: object = configApp) {
   const app = fastify(opts)
   app.register(fastifyBlipp)
@@ -37,10 +39,18 @@ function build(opts: object = configApp) {
   //   }
   // });
 
+  app.register(connectionDb)
+
   app.register(bootstrap, {
     directory: resolve(__dirname, `controllers`),
     mask: /\.controller\./,
   });
+
+  app.register(require('@now-ims/fastify-firebase'), {
+    name: 'admin',
+    cert: resolve(__dirname, 'config/cargolink-18c1a-firebase-adminsdk-cxp47-18adb76867.json'),
+  });
+
   return app
 }
 
