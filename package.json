@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc & cp ./src/config/cargolink-18c1a-firebase-adminsdk-cxp47-18adb76867.json ./dist/config",
     "prestart": "npm run build",
     "start": "node -r ts-node/register ./src/server.ts",
     "dev": "nodemon",
