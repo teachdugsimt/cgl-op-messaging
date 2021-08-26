@@ -36,3 +36,35 @@ export const addTokenSchema: FastifySchema = {
     required: ['token', 'userId']
   }
 }
+
+export interface IFNewJobMessageType {
+  Body: {
+    userId: string,
+    jobData: {
+      jobId: string,
+      productType: string,
+      productName: string,
+      pickupPoint: string,
+      deliveryPoint: string
+    }
+  }
+}
+
+export const newJobMessageSchema: FastifySchema = {
+  body: {
+    properties: {
+      userId: { type: 'string' },
+      jobData: {
+        type: 'object',
+        properties: {
+          jobId: { type: 'string' },
+          productType: { type: 'string' },
+          productName: { type: 'string' },
+          pickupPoint: { type: 'string' },
+          deliveryPoint: { type: 'string' }
+        }
+      }
+    },
+    required: ['userId', 'jobData']
+  }
+}

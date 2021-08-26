@@ -14,7 +14,9 @@ export default class NotificationService {
   }
 
 
-  async pushMessage(tokens: string[], title: string, message: string): Promise<any> {
+  async pushMessage(
+    tokens: string[], title: string,
+    message: string, url: string = ''): Promise<any> {
 
     const app: any = this.instance
     // console.log(tokens[0])
@@ -24,9 +26,10 @@ export default class NotificationService {
       .sendMulticast({
         // token: tokens[0],
         // validate_only: false,
+        channelId: 'new-job',
         tokens: tokens,
         data: {
-          url: 'cgl://job/detail/GL50VMK6'
+          url: url
         },
         notification: {
           title: title,
