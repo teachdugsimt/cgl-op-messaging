@@ -11,6 +11,7 @@ export default class TokenRepository {
 
   async add(data: TokenEntity): Promise<any> {
     const server: any = this.instance
+    console.log(server.db)
     const tokenRepository: Repository<Token> = server?.db?.token;
 
     const result = await tokenRepository.createQueryBuilder()
