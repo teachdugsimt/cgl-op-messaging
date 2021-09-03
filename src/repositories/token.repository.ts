@@ -11,6 +11,7 @@ export default class TokenRepository {
 
   async add(data: TokenEntity): Promise<any> {
     const server: any = this.instance
+    console.log(server.db)
     const tokenRepository: Repository<Token> = server?.db?.token;
 
     const result = await tokenRepository.createQueryBuilder()
@@ -30,7 +31,10 @@ export default class TokenRepository {
   async find(options: FindManyOptions): Promise<any> {
     const server: any = this.instance
     const tokenRepository: Repository<Token> = server?.db?.token;
-    return tokenRepository.find(options);
+
+    const result = await tokenRepository.find(options);
+
+    return result
   }
 
 }

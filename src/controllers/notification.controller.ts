@@ -1,9 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { Controller, GET, getInstanceByToken, POST } from 'fastify-decorators';
+import { Not } from 'typeorm';
 import TokenRepository from '../repositories/token.repository';
 
 import NotificationService from '../services/notification.service'
-import notificationSchema, { addTokenSchema } from './notification.schema';
+import notificationSchema, { addTokenSchema, IFNewJobMessageType, newJobMessageSchema } from './notification.schema';
 
 const tokenRepo = new TokenRepository()
 
@@ -61,16 +62,38 @@ export default class NotificationController {
     reply.send(result)
   }
 
-  @GET({
-    url: '/tokens',
+  @POST({
+    url: '/new-job',
+    options: {
+      schema: newJobMessageSchema
+    }
   })
-  async find(
-    req: FastifyRequest,
+  async sendNewJob(
+    req: FastifyRequest<IFNewJobMessageType>,
     reply: FastifyReply
   ): Promise<any> {
-    // const { token: fcmToken, userId, bundleId, platform } = req.body
 
-    const result = await tokenRepo.find({})
-    reply.send(result)
+    console.log("REQ BODY", req.body)
+
+    let tokens = (await tokenRepo.find({
+      where: {
+        userId: Not(req.body.userId)
+      }
+    })).map(e => e.fcmToken)
+
+    console.log("TOKENS ", tokens)
+
+    if (tokens.length) {
+      const result = await this.notificationService.pushMessage(
+        tokens, "คาร์โก้ลิ้งค์ มีงานใหม่ที่คุณอาจสนใจ",
+        `งานขนส่ง ${req.body.jobData.productName}, ${req.body.jobData.pickupPoint} => ${req.body.jobData.deliveryPoint}`,
+        `cgl://job/detail/${req.body.jobData.jobId}`
+      )
+      reply.send(result)
+    } else {
+      reply.send({})
+    }
+    // console.log(result)
+
   }
 }

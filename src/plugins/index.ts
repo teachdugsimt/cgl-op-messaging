@@ -42,7 +42,8 @@ export default fp(async server => {
     console.log("Step 1 : connectionn database")
     // const connection = await createConnection(await config);
     const connection = await createConnection();
-    // console.log('database connected :: ', connection);
+    console.log('database connected :: ', connection);
+
     server.decorate('db', {
       token: connection.getRepository(Token),
     });

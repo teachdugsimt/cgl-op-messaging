@@ -21,10 +21,27 @@ POST http://localhost:3000/api/v1/messaging/notification/add-token HTTP/1.1
 Content-Type: application/json
 
 {
-  "token": "e1f618824e26a5c3d024dbdffd15c4e540115dd53aceff59f0b97da09f1e10fd",
-  "userId": "abcdef", 
-  "platform": "android"
+  "token": "asdffdsaaabb",
+  "userId": "ABCDEFGH", 
+  "platform": "ios"
 }
+
+###
+
+POST http://localhost:3000/api/v1/messaging/notification/new-job HTTP/1.1
+Content-Type: application/json
+
+{
+  "userId": "9KP9Q3ZR",
+  "jobData": {
+    "jobId": "string",
+    "productType": "string",
+    "productName": "ถ่านหิน",
+    "pickupPoint": "ระยอง",
+    "deliveryPoint": "นครศรีธรรมราช"
+  }
+}
+
 
 ###
 
