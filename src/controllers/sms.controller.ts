@@ -24,8 +24,8 @@ export default class SmsController {
         headers: {},
         body: JSON.stringify(result)
       }
-    } catch (error) {
-      let body = error.stack || JSON.stringify(error, null, 2);
+    } catch (error: any) {
+      let body = error?.stack || JSON.stringify(error, null, 2);
       console.log("Error Catch :: ", error)
       return {
         statusCode: 403,
