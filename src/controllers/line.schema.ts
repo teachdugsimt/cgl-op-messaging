@@ -29,3 +29,28 @@ const lineSchema: FastifySchema = {
 }
 
 export default lineSchema
+
+
+
+export const listUsersSchema: FastifySchema = {
+  // headers: {
+  //   type: 'object',
+  //   properties: {
+  //     'authorization': { type: 'string' },
+  //   },
+  //   required: ['authorization']
+  // },
+  body: {
+    type: 'object',
+    properties: {
+      jobId: { type: 'string' }
+    },
+  },
+  response: {
+    200: {
+      type: 'object',
+      properties: responseTemplate,
+      additionalProperties: true
+    }
+  }
+}
