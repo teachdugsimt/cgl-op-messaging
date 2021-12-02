@@ -64,12 +64,10 @@ export default class LineController {
   })
   async pushMultipleMessage(req: FastifyRequest<{ Body: { jobId: string } }>, reply: FastifyReply): Promise<any> {
     const CHANNEL_ACCESS_TOKEN: string = process.env.CHANNEL_ACCESS_TOKEN || `lNihXk/rkTAUvTrDhiKl4qxZoXno64fiw/FNcikJ1e6X4hI1WUQlPUlZqODDW0F4FgNJLRGOyzzQJV0a3Cd/QdZEhXVcc8eV9+NnXgdcSyEioxpjA14/9HMXcvaOh5bYQKEWeUd8X9GAJB0h/iZFZQdB04t89/1O/w1cDnyilFU=`
+    // const CHANNEL_ACCESS_TOKEN: string = process.env.CHANNEL_ACCESS_TOKEN || `4KybyogvUm2dpVPTsLxbd7NFM010G8XmI2tAz2RtFnHpECgd2aXLWVLd4/O7hnfYm4+6tLEmuNcDaGWeNDI0EYbrruT/JRfIsWeU5qHDVmwlYpWu7IOX5PcgC5fYPBFpyZ7Ujp/WKCDzRETGg+MVEgdB04t89/1O/w1cDnyilFU=`
     const body = typeof req.body == 'string' ? JSON.parse(req.body) : req.body
-    const result = await this.lineService.boardcast(CHANNEL_ACCESS_TOKEN, body.jobId)
-    console.log("Result :: ", result)
-    if (result.status == 200) {
-      return result.data
-    }
+    await this.lineService.boardcast(CHANNEL_ACCESS_TOKEN, body.jobId)
+    return true
   }
 
 

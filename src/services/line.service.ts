@@ -71,6 +71,7 @@ export default class LineService {
   async boardcast(bearerToken: string, jobId: string): Promise<any> {
     const LIFF_ORIGIN: string = "https://liff.line.me/"
     const LIFF_ID: string = process.env.LIFF_ID || "1656270808-MA5RQ8gL"
+    // const LIFF_ID: string = process.env.LIFF_ID || "1654028138-xN1eYZoV"
     const BACKOFFICE_PATH: string = `/view/${jobId}`
     const finalLiff: string = LIFF_ORIGIN + LIFF_ID + BACKOFFICE_PATH
     console.log(`🚀  ->  finalLiff`, finalLiff);
@@ -105,6 +106,7 @@ export default class LineService {
               "aspectRatio": findImageName.aspectRatio,
               "aspectMode": findImageName.aspectMode,
               ...(findImageName?.options ? findImageName.options : undefined),
+              // "backgroundColor": "#FBBC12",
               "action": {
                 "type": "uri",
                 "uri": finalLiff
@@ -119,6 +121,10 @@ export default class LineService {
                   "weight": "bold",
                   "size": "xl",
                   "text": data?.productName || '-'
+                },
+                {
+                  "type": "text",
+                  "text": `ประเภทรถ : ${findImageName?.truckTypeName}`
                 },
                 // {
                 //   "type": "box",
@@ -212,8 +218,12 @@ export default class LineService {
                 }
               ],
               "flex": 0
+            },
+            "styles": {
+              "hero": {
+                "backgroundColor": "#FBBC12"
+              }
             }
-
 
 
 
